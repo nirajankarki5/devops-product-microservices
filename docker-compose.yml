@@ -1,0 +1,40 @@
+version: '3'
+services:
+  users:
+    build: ./users
+    ports:
+      - "4001:4001"
+    depends_on:
+      - user_db
+  user_db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./user/db:/data/db
+
+  products:
+    build: ./products
+    ports:
+      - "4002:4002"
+    depends_on:
+      - product_db
+  product_db:
+    image: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./product/db:/data/db
+
+  carts:
+    build: ./carts
+    ports:
+      - "4003:4003"
+    depends_on:
+      - cart_db
+  cart_db:
+    image: mongo
+    ports:
+      - "27019:27017"
+    volumes:
+      - ./cart/db:/data/db
