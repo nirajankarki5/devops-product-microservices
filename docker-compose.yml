@@ -5,8 +5,8 @@ services:
     ports:
       - "4001:4001"
     depends_on:
-      - user_db
-  user_db:
+      - db-users
+  db-users:
     image: mongo
     ports:
       - "27017:27017"
@@ -18,8 +18,8 @@ services:
     ports:
       - "4002:4002"
     depends_on:
-      - product_db
-  product_db:
+      - db-products
+  db-products:
     image: mongo
     ports:
       - "27018:27017"
@@ -31,8 +31,8 @@ services:
     ports:
       - "4003:4003"
     depends_on:
-      - cart_db
-  cart_db:
+      - db-carts
+  db-carts:
     image: mongo
     ports:
       - "27019:27017"

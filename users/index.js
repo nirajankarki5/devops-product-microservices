@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const connectionString = "mongodb://localhost:27017/db-users";
+const connectionString = "mongodb://db-users:27017/usersDB";
 
 app.get("/users", async (req, res) => {
   const users = await User.find({});

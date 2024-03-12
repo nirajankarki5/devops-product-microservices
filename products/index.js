@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const connectionString = "mongodb://localhost:27017/db-products";
+const connectionString = "mongodb://db-products:27017/productsDB";
 
 app.get("/products", async (req, res) => {
   const products = await Product.find({});
