@@ -1,0 +1,28 @@
+// GET all products
+GET: localhost:4002/products
+
+// GET product by ID
+GET: localhost:4002/products/ID
+
+// Create product
+POST: localhost:4002/products
+
+-------------------------------------------
+// GET all users
+GET: localhost:4001/users
+
+// GET user by ID
+GET: localhost:4001/users/ID
+
+// Create user
+POST: localhost:4001/users
+
+------------------------------------------
+// GET all carts
+GET: localhost:4003/carts
+
+// GET cart by ID
+GET: localhost:4003/carts/ID
+
+// Create cart
+POST: localhost:4003/carts

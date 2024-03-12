@@ -1,0 +1,9 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+/carts/node_modules
+/products/node_modules
+/users/node_modules
