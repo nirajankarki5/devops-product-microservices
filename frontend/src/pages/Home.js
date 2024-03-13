@@ -35,7 +35,7 @@ const Home = () => {
         {!isLoading &&
           products.map((product) => {
             return (
-              <div key={product.id}>
+              <div key={product._id}>
                 <Product product={product} />
               </div>
             );

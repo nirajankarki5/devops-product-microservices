@@ -41,7 +41,7 @@ const Cart = () => {
       {isLoading && <h3>Loading...</h3>}
       {!isLoading &&
         cartItems.map((cart) => (
-          <div key={cart.id} className="cart-item">
+          <div key={cart._id} className="cart-item">
             <h2 className="cart-name">{cart.product.name}</h2>
             <p className="cart-price">${cart.product.price}</p>
             <p className="cart-quantity">Quantity: 1</p>
