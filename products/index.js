@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const Product = require("./ProductModel");
 const app = express();
 
@@ -7,7 +8,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const connectionString = "mongodb://db-products:27017/productsDB";
+// Enable all CORS requests
+app.use(cors());
+
+const connectionString = "mongodb://localhost:27017/db-products";
 
 app.get("/products", async (req, res) => {
   const products = await Product.find({});

@@ -2,21 +2,14 @@ import React, { useEffect, useState } from "react";
 import Product from "../components/Product";
 
 const Home = () => {
-  const [products, setProducts] = useState([
-    { id: 1, name: "product1", price: 100 },
-    { id: 2, name: "product2", price: 102 },
-    { id: 3, name: "product3", price: 103 },
-    { id: 4, name: "product4", price: 104 },
-    { id: 5, name: "product5", price: 105 },
-    { id: 6, name: "product6", price: 106 },
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchProducts = async () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("https://localhost");
+      const response = await fetch("http://localhost:4002/products");
       const users = await response.json();
       setProducts(users);
       setIsLoading(false);
@@ -26,7 +19,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // fetchProducts();
+    fetchProducts();
   }, []);
 
   return (
