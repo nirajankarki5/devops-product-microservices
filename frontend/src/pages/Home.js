@@ -5,6 +5,8 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const fetchProducts = async () => {
     setIsLoading(true);
 
@@ -20,20 +22,38 @@ const Home = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+
+    if (localStorage.getItem("userId")) {
+      setIsLoggedIn(true);
+    }
+  }, [isLoggedIn]);
 
   return (
-    <div className="home-container">
-      {isLoading && <h3>Loading...</h3>}
-      {!isLoading &&
-        products.map((product) => {
-          return (
-            <div key={product.id}>
-              <Product product={product} />
-            </div>
-          );
-        })}
-    </div>
+    <>
+      <div className="home-container">
+        {isLoading && <h3>Loading...</h3>}
+        {!isLoading &&
+          products.map((product) => {
+            return (
+              <div key={product.id}>
+                <Product product={product} />
+              </div>
+            );
+          })}
+      </div>
+      {isLoggedIn && (
+        <div className="btn-logout">
+          <button
+            onClick={() => {
+              localStorage.clear();
+              setIsLoggedIn(false);
+            }}
+          >
+            Log Out
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

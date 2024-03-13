@@ -24,6 +24,18 @@ app.get("/users/:id", async (req, res) => {
   res.status(200).json(user);
 });
 
+app.post("/users/login", async (req, res) => {
+  const user = await User.find({
+    email: req.body.email,
+    password: req.body.password,
+  });
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404).json({ msg: "NO user Found" });
+  }
+});
+
 app.post("/users", async (req, res) => {
   console.log(req.body);
   try {

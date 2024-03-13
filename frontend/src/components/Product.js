@@ -2,6 +2,10 @@ import React from "react";
 import { FaImage } from "react-icons/fa";
 
 const Product = ({ product }) => {
+  const addToCart = async () => {
+    // const response = await fetch("http://localhost:4003/carts");
+  };
+
   return (
     <div className="product-card">
       <div className="product-img">
