@@ -18,9 +18,9 @@ app.get("/carts", async (req, res) => {
   res.status(200).json(carts);
 });
 
-app.get("/carts/:id", async (req, res) => {
-  const { id } = req.params;
-  const cart = await Cart.findOne({ _id: id });
+app.get("/carts/:userId", async (req, res) => {
+  const { userId } = req.params;
+  const cart = await Cart.find({ userId: userId });
   res.status(200).json(cart);
 });
 

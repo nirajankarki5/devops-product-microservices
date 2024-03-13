@@ -47,9 +47,10 @@ const Login = () => {
     setPassword("");
 
     console.log(response.status);
+    console.log(data);
 
     if (response.status === 200) {
-      localStorage.setItem("userId", data._id);
+      localStorage.setItem("userId", JSON.stringify(data[0]._id));
       navigate("/");
     }
   };
