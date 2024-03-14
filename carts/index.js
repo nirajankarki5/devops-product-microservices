@@ -36,13 +36,21 @@ app.post("/carts", async (req, res) => {
 
 const start = async () => {
   try {
-    await mongoose.connect(connectionString);
-    console.log("Connected to db");
+    mongoose
+      .connect("mongodb://mongodb:27017/db-users", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then(() => {
+        console.log("Connected to MongoDB");
+      })
+      .catch((error) => {
+        console.error("Error connecting to MongoDB:", error);
+      });
   } catch (error) {
     console.log(error);
   }
 };
-
 app.listen(4003, () => {
   console.log("Carts Listening on 4003");
 });
