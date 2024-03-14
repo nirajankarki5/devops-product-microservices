@@ -1,40 +1,43 @@
-version: '3'
+version: "3"
+
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    image: sthajay/frontend:1.0
+    container_name: frontend_container
   users:
-    build: ./users
+    build:
+      context: ./users
+      dockerfile: Dockerfile
     ports:
       - "4001:4001"
     depends_on:
-      - db-users
-  db-users:
-    image: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./user/db:/data/db
-
-  products:
-    build: ./products
-    ports:
-      - "4002:4002"
-    depends_on:
-      - db-products
-  db-products:
-    image: mongo
-    ports:
-      - "27018:27017"
-    volumes:
-      - ./product/db:/data/db
-
+      - mongodb
   carts:
-    build: ./carts
+    build:
+      context: ./carts
+      dockerfile: Dockerfile
     ports:
       - "4003:4003"
     depends_on:
-      - db-carts
-  db-carts:
-    image: mongo
+      - mongodb
+  products:
+    build:
+      context: ./products
+      dockerfile: Dockerfile
     ports:
-      - "27019:27017"
+      - "4002:4002"
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
     volumes:
-      - ./cart/db:/data/db
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:

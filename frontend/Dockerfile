@@ -9,6 +9,10 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 4001
+EXPOSE 3000
 
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
+
+
+AyR0AMw5RhSfeeRdPxEBdQ
+AyR0AMw5RhSfeeRdPxEBdQ
