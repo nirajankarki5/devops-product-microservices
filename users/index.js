@@ -14,7 +14,10 @@ app.use(cors());
 const connectionString = "mongodb://localhost:27017/db-users";
 
 app.get("/users", async (req, res) => {
+  console.log({ req });
   const users = await User.find({});
+  console.log({ users });
+
   res.status(200).json(users);
 });
 
@@ -48,8 +51,17 @@ app.post("/users", async (req, res) => {
 
 const start = async () => {
   try {
-    await mongoose.connect(connectionString);
-    console.log("Connected to db");
+    mongoose
+      .connect("mongodb://mongodb:27017/db-users", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then(() => {
+        console.log("Connected to MongoDB");
+      })
+      .catch((error) => {
+        console.error("Error connecting to MongoDB:", error);
+      });
   } catch (error) {
     console.log(error);
   }
