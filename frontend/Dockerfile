@@ -13,6 +13,3 @@ EXPOSE 3000
 
 CMD ["npm", "start"]
 
-
-AyR0AMw5RhSfeeRdPxEBdQ
-AyR0AMw5RhSfeeRdPxEBdQ
