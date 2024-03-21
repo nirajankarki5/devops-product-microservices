@@ -8,9 +8,6 @@ services:
     image: sthajay/frontend:1.0
     container_name: frontend_container
   users:
-    # build:
-    #   context: ./users
-    #   dockerfile: Dockerfile
     ports:
       - "4001:4001"
     image: sthajay/users:latest
@@ -18,9 +15,6 @@ services:
     depends_on:
       - mongodb
   carts:
-    # build:
-    #   context: ./carts
-    #   dockerfile: Dockerfile
     image: sthajay/carts:latest
     container_name: carts_container
     ports:

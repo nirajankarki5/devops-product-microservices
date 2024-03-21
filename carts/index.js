@@ -37,7 +37,7 @@ app.post("/carts", async (req, res) => {
 const start = async () => {
   try {
     mongoose
-      .connect("mongodb://mongodb:27017/db-users", {
+      .connect("mongodb://mongodb:27017/db-carts", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
