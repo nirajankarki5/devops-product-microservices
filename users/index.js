@@ -52,7 +52,7 @@ app.post("/users", async (req, res) => {
 const start = async () => {
   try {
     mongoose
-      .connect("mongodb://mongodb:27017/db-users", {
+      .connect("mongodb://mongodb:27017/db-devops", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
