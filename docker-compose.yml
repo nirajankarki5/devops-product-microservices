@@ -2,32 +2,33 @@ version: "3"
 
 services:
   frontend:
-    build: ./frontend
     ports:
       - 3000:3000
     image: sthajay/frontend:1.0
     container_name: frontend_container
+    depends_on:
+      - mongodb
+      - users
+      - products
+      - carts
   users:
     ports:
       - "4001:4001"
-    image: sthajay/users:latest
+    image: sthajay/users:2.0
     container_name: users_container
     depends_on:
       - mongodb
   carts:
-    image: sthajay/carts:latest
+    image: sthajay/carts:2.0
     container_name: carts_container
     ports:
       - "4003:4003"
     depends_on:
       - mongodb
   products:
-    # build:
-    #   context: ./products
-    #   dockerfile: Dockerfile
     ports:
       - "4002:4002"
-    image: sthajay/products:latest
+    image: sthajay/products:2.0
     container_name: products_container
     depends_on:
       - mongodb

@@ -37,7 +37,7 @@ app.post("/products", async (req, res) => {
 const start = async () => {
   try {
     mongoose
-      .connect("mongodb://mongodb:27017/db-products", {
+      .connect("mongodb://mongodb:27017/db-devops", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
